@@ -249,12 +249,4 @@ This should do the trick - ssh into the virtual machine:
 Once you see the trusty prompt, you can start developing!
 
     vagrant@vagrant-ubuntu-trusty-32:~$
-    
-    
-    
-    
-    
-    
-    
-    
-    ##Ignore this it is just to test the webhook 
+   
