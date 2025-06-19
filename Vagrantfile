@@ -95,7 +95,7 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
+      vb.gui = true
   #
      # Customize the amount of memory on the VM:
      # Git fails to clone the
@@ -121,7 +121,11 @@ Vagrant.configure(2) do |config|
   # config.push.define "atlas" do |push|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
-
+  config.vm.provision "shell", inline: <<-SHELL
+  echo 'nameserver 8.8.8.8' | sudo tee /etc/resolvconf/resolv.conf.d/head
+  echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolvconf/resolv.conf.d/head
+  sudo resolvconf -u
+  SHELL
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
