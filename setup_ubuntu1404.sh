@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo -e "\n Setting up environment in Ubuntu 14.04"
+sudo rm -f /etc/apt/sources.list.d/ubuntu-esm-infra-trusty.list
 sudo apt-get -y update
 sudo apt-get -y install \
  build-essential \
@@ -26,6 +27,8 @@ sudo apt-get -y install \
  libacl1-dev \
  zlib1g-dev \
  liblzo2-dev \
+ bison \
+ flex \
  uuid-dev
 
 if uname -a |grep -q 64;
@@ -48,6 +51,14 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="1010", GROUP="plug
 SUBSYSTEM=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="plugdev", MODE="0660" SYMLINK+="usb-serial-adapter"
 ' | sudo tee /etc/udev/rules.d/99-allwinner.rules
 sudo udevadm control --reload-rules
+
+echo -e "\n Installing DTC localy for sunix-tools to build correctly"
+if [ -d dtc ]; then
+  rm -rf dtc
+fi
+git clone http://chip.jfpossibilities.com/gits/dtc.git 
+pushd dtc
+make
 
 echo -e "\n Installing sunxi-tools"
 if [ -d sunxi-tools ]; then
