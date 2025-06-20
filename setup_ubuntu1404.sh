@@ -68,7 +68,7 @@ fi
 git clone http://github.com/linux-sunxi/sunxi-tools
 pushd sunxi-tools
 sed -i 's/-lfdt/\/home\/vagrant\/dtc\/libfdt\/libfdt.a/' Makefile
-make CFLAGS="-I$pwd/dtc/libfdt"
+make CFLAGS="-I/home/vagrant/dtc/libfdt"
 make misc
 SUNXI_TOOLS=(sunxi-bootinfo
 sunxi-fel
