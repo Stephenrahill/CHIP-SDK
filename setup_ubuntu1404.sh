@@ -102,7 +102,7 @@ git clone https://github.com/Project-chip-crumbs/CHIP-tools.git
 
 echo -e "\n Installing CHIP-buildroot"
 if [ ! -d CHIP-buildroot ]; then
-  git clone http://github.com/Project-chip-crumbs/CHIP-buildroot
+  git clone http://github.com/stephenrahill/CHIP-buildroot
 else
   pushd CHIP-buildroot
   git pull
