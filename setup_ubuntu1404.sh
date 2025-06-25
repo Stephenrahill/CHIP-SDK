@@ -56,7 +56,7 @@ echo -e "\n Installing DTC localy for sunix-tools to build correctly"
 if [ -d dtc ]; then
   rm -rf dtc
 fi
-git clone http://chip.jfpossibilities.com/gits/dtc.git 
+git clone http://github.com/stephenrahill/dtc
 pushd dtc
 make
 popd
